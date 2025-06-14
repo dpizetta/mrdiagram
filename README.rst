@@ -16,6 +16,9 @@ distinguish between different parameters, check the icon generation within the p
 
 **Normalization**: All shapes are normalized to the range [-1, 1] for consistent amplitude representation across different shape types.
 
+In the near future we will have integration with tools like DrawIO, where the elements can be imported as a library
+and the diagrams can be shared with people or groups.
+
 Shape Categories
 ================
 
@@ -236,8 +239,9 @@ Features:
 - **64x64/32X32 Icon Preview**: Quality check with miniature shape icon
 - **JSON Import/Export**: Load and save shape databases
 
-.. image:: image/plot.gif
+.. image:: ./plot.gif
    :alt: Shape preview and JSON editor
+   :width: 80%
    :align: center
 
 Extension Guidelines
@@ -293,7 +297,7 @@ When contributing new shapes or features:
 4. Add appropriate metadata to the JSON configuration
 5. Test shape generation across different point counts
 6. Ensure all shapes are properly normalized to [-1, 1]
-7. Test integration with the GUI application
+7. Test integration with the GUI application, specially the icon preview
 
 Dependencies
 ============
