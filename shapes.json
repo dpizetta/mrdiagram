@@ -1,0 +1,581 @@
+{
+  "shapes": [
+    {
+      "id": "rectangle",
+      "name": "Rectangle",
+      "description": "Rectangular - General RF/Trigger pulse shape",
+      "type": "RF",
+      "tags": [
+        "broadband",
+        "non-selective",
+        "rectangular",
+        "hard"
+      ],
+      "usage": "Non-selective excitation, calibration, shimming",
+      "selectivity": "low",
+      "duration": "short",
+      "sar": "medium",
+      "class": "RectangularShape",
+      "args": {
+        "num_points": 100
+      }
+    },
+    {
+      "id": "sinc",
+      "name": "Sinc",
+      "description": "Sinc pulse for slice-selective excitation with adjustable bandwidth",
+      "type": "RF",
+      "tags": [
+        "selective",
+        "slice selection",
+        "sinc"
+      ],
+      "usage": "Slice-selective excitation, standard imaging",
+      "selectivity": "medium",
+      "duration": "medium",
+      "sar": "medium",
+      "class": "SincShape",
+      "args": {
+        "num_points": 200,
+        "bandwidth": 4
+      }
+    },
+    {
+      "id": "gaussian",
+      "name": "Gaussian",
+      "description": "Gaussian-shaped RF pulse with smooth profile",
+      "type": "RF",
+      "tags": [
+        "smooth",
+        "gaussian",
+        "selective"
+      ],
+      "usage": "Selective excitation with minimal side lobes",
+      "selectivity": "medium",
+      "duration": "medium",
+      "sar": "medium",
+      "class": "GaussianShape",
+      "args": {
+        "num_points": 100,
+        "sigma": 0.8
+      }
+    },
+    {
+      "id": "hamming_sinc",
+      "name": "Hamming Sinc",
+      "description": "Hamming-windowed sinc pulse for improved slice profile",
+      "type": "RF",
+      "tags": [
+        "windowed",
+        "selective",
+        "hamming"
+      ],
+      "usage": "Improved slice-selective excitation",
+      "selectivity": "high",
+      "duration": "medium",
+      "sar": "medium",
+      "class": "HammingSincShape",
+      "args": {
+        "num_points": 100,
+        "bandwidth": 3
+      }
+    },
+    {
+      "id": "chess",
+      "name": "CHESS",
+      "description": "Chemical Shift Selective - Gaussian-modulated pulse for fat suppression",
+      "type": "RF",
+      "tags": [
+        "fat suppression",
+        "chemical shift",
+        "selective",
+        "gaussian"
+      ],
+      "usage": "Fat suppression, chemical shift selective excitation",
+      "selectivity": "high",
+      "duration": "medium",
+      "sar": "medium",
+      "class": "ChessShape",
+      "args": {
+        "num_points": 200,
+        "sigma": 0.5,
+        "omega": 4.0
+      }
+    },
+    {
+      "id": "adiabatic",
+      "name": "Adiabatic",
+      "description": "Adiabatic hyperbolic secant pulse for B1-insensitive inversion",
+      "type": "RF",
+      "tags": [
+        "adiabatic",
+        "B1-insensitive",
+        "inversion",
+        "robust"
+      ],
+      "usage": "B1-insensitive inversion, T1 measurements, FLAIR",
+      "selectivity": "medium",
+      "duration": "long",
+      "sar": "high",
+      "class": "AdiabaticShape",
+      "args": {
+        "num_points": 200,
+        "beta": 5.0
+      }
+    },
+    {
+      "id": "slr",
+      "name": "SLR",
+      "description": "Shinnar-Le Roux designed pulse with optimal slice profile",
+      "type": "RF",
+      "tags": [
+        "selective",
+        "optimized",
+        "precise profile",
+        "slice selection"
+      ],
+      "usage": "Selective excitation with precise slice profile",
+      "selectivity": "high",
+      "duration": "medium",
+      "sar": "medium",
+      "class": "SLRShape",
+      "args": {
+        "num_points": 200
+      }
+    },
+    {
+      "id": "verse",
+      "name": "VERSE",
+      "description": "Variable-rate selective excitation for reduced SAR",
+      "type": "RF",
+      "tags": [
+        "variable rate",
+        "SAR reduction",
+        "selective"
+      ],
+      "usage": "SAR-reduced selective excitation",
+      "selectivity": "high",
+      "duration": "medium",
+      "sar": "low",
+      "class": "VerseShape",
+      "args": {
+        "num_points": 100
+      }
+    },
+    {
+      "id": "fermi",
+      "name": "Fermi",
+      "description": "Fermi pulse with adjustable transition width and plateau",
+      "type": "RF",
+      "tags": [
+        "fermi",
+        "transition",
+        "plateau"
+      ],
+      "usage": "Controlled transition width excitation",
+      "selectivity": "tunable",
+      "duration": "medium",
+      "sar": "medium",
+      "class": "FermiShape",
+      "args": {
+        "num_points": 100,
+        "transition": 0.5,
+        "plateau_width": 0.5
+      }
+    },
+    {
+      "id": "spsp",
+      "name": "SPSP",
+      "description": "Spectral-Spatial pulse for simultaneous frequency and spatial selection",
+      "type": "RF",
+      "tags": [
+        "spectral",
+        "spatial",
+        "dual selective"
+      ],
+      "usage": "Combined frequency and spatial selection",
+      "selectivity": "high",
+      "duration": "long",
+      "sar": "medium",
+      "class": "SPSPShape",
+      "args": {
+        "num_points": 200,
+        "spatial_freq": 1,
+        "spectral_freq": 2
+      }
+    },
+    {
+      "id": "composite",
+      "name": "Composite",
+      "description": "Composite pulse with multiple components",
+      "type": "RF",
+      "tags": [
+        "composite",
+        "multi-component"
+      ],
+      "usage": "B1 inhomogeneity compensation",
+      "selectivity": "medium",
+      "duration": "medium",
+      "sar": "medium",
+      "class": "CompositeShape",
+      "args": {
+        "num_points": 100
+      }
+    },
+    {
+      "id": "dante",
+      "name": "DANTE",
+      "description": "Delays Alternating with Nutations for Tailored Excitation",
+      "type": "RF",
+      "tags": [
+        "selective",
+        "multi-pulse",
+        "frequency selective",
+        "small flip"
+      ],
+      "usage": "Frequency-selective excitation, CSI suppression, flow imaging",
+      "selectivity": "high",
+      "duration": "long",
+      "sar": "low",
+      "class": "DanteShape",
+      "args": {
+        "num_points": 100,
+        "num_pulses": 10,
+        "pulse_width": 0.1,
+        "spacing": 0.5
+      }
+    },
+    {
+      "id": "hyperbolic_secant",
+      "name": "Hyperbolic Secant",
+      "description": "Hyperbolic secant adiabatic pulse with frequency sweep",
+      "type": "RF",
+      "tags": [
+        "adiabatic",
+        "frequency sweep",
+        "robust"
+      ],
+      "usage": "Adiabatic inversion with frequency modulation",
+      "selectivity": "medium",
+      "duration": "long",
+      "sar": "high",
+      "class": "HyperbolicSecantShape",
+      "args": {
+        "num_points": 100,
+        "beta": 3,
+        "mu": 2.0
+      }
+    },
+    {
+      "id": "bir",
+      "name": "BIR",
+      "description": "B1-Independent Rotation adiabatic pulse",
+      "type": "RF",
+      "tags": [
+        "adiabatic",
+        "B1-independent",
+        "rotation"
+      ],
+      "usage": "B1-insensitive rotation pulses",
+      "selectivity": "medium",
+      "duration": "long",
+      "sar": "high",
+      "class": "BIRShape",
+      "args": {
+        "num_points": 100,
+        "n": 10
+      }
+    },
+    {
+      "id": "fid",
+      "name": "FID",
+      "description": "Free Induction Decay signal with T2* decay",
+      "type": "Signal",
+      "tags": [
+        "FID",
+        "T2* decay",
+        "signal",
+        "acquisition"
+      ],
+      "usage": "Signal acquisition visualization, T2* measurements",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "FIDShape",
+      "args": {
+        "num_points": 200,
+        "t2_star": 10.0,
+        "frequency": 120.0,
+        "phase": 0.0
+      }
+    },
+    {
+      "id": "echo",
+      "name": "Echo",
+      "description": "Echo signal formation with T2 decay and rephasing",
+      "type": "Signal",
+      "tags": [
+        "echo",
+        "T2 decay",
+        "signal",
+        "rephasing"
+      ],
+      "usage": "T2-weighted imaging, signal readout visualization",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "EchoShape",
+      "args": {
+        "num_points": 200,
+        "t2": 20.0,
+        "t2_star": 10.0,
+        "echo_time": 40.0,
+        "frequency": 100.0,
+        "phase": 0.0
+      }
+    },
+    {
+      "id": "stir",
+      "name": "STIR",
+      "description": "Short TI Inversion Recovery signal",
+      "type": "Signal",
+      "tags": [
+        "inversion recovery",
+        "T1",
+        "STIR"
+      ],
+      "usage": "T1-weighted imaging with inversion recovery",
+      "selectivity": "not_applicable",
+      "duration": "long",
+      "sar": "not_applicable",
+      "class": "STIRShape",
+      "args": {
+        "num_points": 100,
+        "t1": 1000,
+        "ti": 200
+      }
+    },
+    {
+      "id": "trigger",
+      "name": "Trigger",
+      "description": "Hardware synchronization trigger pulse",
+      "type": "Trigger and Flag",
+      "tags": [
+        "trigger",
+        "sync",
+        "hardware"
+      ],
+      "usage": "Hardware synchronization, sequence timing",
+      "selectivity": "not_applicable",
+      "duration": "short",
+      "sar": "not_applicable",
+      "class": "TriggerShape",
+      "args": {
+        "num_points": 100
+      }
+    },
+    {
+      "id": "flag",
+      "name": "Trigger and Flag",
+      "description": "Logical marker for sequence events",
+      "type": "Flag",
+      "tags": [
+        "flag",
+        "marker",
+        "event"
+      ],
+      "usage": "Sequence event marking, timing references",
+      "selectivity": "not_applicable",
+      "duration": "short",
+      "sar": "not_applicable",
+      "class": "FlagShape",
+      "args": {
+        "num_points": 100
+      }
+    },
+    {
+      "id": "trapezoid",
+      "name": "Trapezoid",
+      "description": "Trapezoidal gradient waveform with controlled slew rate",
+      "type": "Gradient",
+      "tags": [
+        "encoding",
+        "trapezoid",
+        "slew rate",
+        "spatial"
+      ],
+      "usage": "Readout encoding, phase encoding, slice selection",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "TrapezoidShape",
+      "args": {
+        "num_points": 100,
+        "rise_fraction": 0.2,
+        "plateau_fraction": 0.6,
+        "fall_fraction": 0.2
+      }
+    },
+    {
+      "id": "ramp_up",
+      "name": "Ramp Up",
+      "description": "Linear ramp up gradient",
+      "type": "Gradient",
+      "tags": [
+        "ramp",
+        "linear",
+        "gradient"
+      ],
+      "usage": "Gradient preparation, encoding",
+      "selectivity": "not_applicable",
+      "duration": "short",
+      "sar": "not_applicable",
+      "class": "RampUpShape",
+      "args": {
+        "num_points": 100
+      }
+    },
+    {
+      "id": "ramp_down",
+      "name": "Ramp Down",
+      "description": "Linear ramp down gradient",
+      "type": "Gradient",
+      "tags": [
+        "ramp",
+        "linear",
+        "gradient"
+      ],
+      "usage": "Gradient preparation, encoding",
+      "selectivity": "not_applicable",
+      "duration": "short",
+      "sar": "not_applicable",
+      "class": "RampDownShape",
+      "args": {
+        "num_points": 100
+      }
+    },
+    {
+      "id": "radial",
+      "name": "Radial",
+      "description": "Radial gradient for radial k-space sampling",
+      "type": "Gradient",
+      "tags": [
+        "radial",
+        "k-space",
+        "sampling"
+      ],
+      "usage": "Radial imaging, UTE sequences",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "RadialShape",
+      "args": {
+        "num_points": 200,
+        "phase": 0.0,
+        "cycles": 5
+      }
+    },
+    {
+      "id": "radial",
+      "name": "Radial 90\u00b0",
+      "description": "Radial gradient for radial k-space sampling - 90\u00b0 phase",
+      "type": "Gradient",
+      "tags": [
+        "radial",
+        "k-space",
+        "sampling"
+      ],
+      "usage": "Radial imaging, UTE sequences",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "RadialShape",
+      "args": {
+        "num_points": 200,
+        "phase": 1.57,
+        "cycles": 5
+      }
+    },
+    {
+      "id": "spiral",
+      "name": "Spiral",
+      "description": "Spiral gradient for spiral k-space trajectories",
+      "type": "Gradient",
+      "tags": [
+        "spiral",
+        "k-space",
+        "fast imaging"
+      ],
+      "usage": "Fast imaging, spiral trajectories",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "SpiralShape",
+      "args": {
+        "num_points": 200,
+        "turns": 5,
+        "phase": 0.0
+      }
+    },
+    {
+      "id": "spiral90",
+      "name": "Spiral 90\u00b0",
+      "description": "Spiral gradient for spiral k-space trajectories - 90\u00b0 phase",
+      "type": "Gradient",
+      "tags": [
+        "spiral",
+        "k-space",
+        "fast imaging"
+      ],
+      "usage": "Fast imaging, spiral trajectories",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "SpiralShape",
+      "args": {
+        "num_points": 200,
+        "turns": 5,
+        "phase": 1.57
+      }
+    },
+    {
+      "id": "epi",
+      "name": "EPI",
+      "description": "Echo Planar Imaging gradient waveform",
+      "type": "Gradient",
+      "tags": [
+        "EPI",
+        "echo planar",
+        "fast imaging"
+      ],
+      "usage": "Echo planar imaging, diffusion imaging",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "EPIShape",
+      "args": {
+        "num_points": 200,
+        "lines": 6
+      }
+    },
+    {
+      "id": "bipolar",
+      "name": "Bipolar",
+      "description": "Bipolar gradient for velocity encoding",
+      "type": "Gradient",
+      "tags": [
+        "bipolar",
+        "velocity",
+        "flow"
+      ],
+      "usage": "Flow imaging, velocity encoding",
+      "selectivity": "not_applicable",
+      "duration": "medium",
+      "sar": "not_applicable",
+      "class": "BipolarShape",
+      "args": {
+        "num_points": 100
+      }
+    }
+  ]
+}
