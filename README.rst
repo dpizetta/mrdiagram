@@ -206,45 +206,13 @@ Using Shapes in Python Code
     print(f"RF pulse range: [{rf_data.min():.3f}, {rf_data.max():.3f}]")
     print(f"Gradient range: [{grad_data.min():.3f}, {grad_data.max():.3f}]")
 
-Plotting Shapes
----------------
-
-.. code-block:: python
-
-    import matplotlib.pyplot as plt
-    import numpy as np
-    from shapes import SincShape, EchoShape
-
-    # Create and plot a Sinc pulse
-    sinc_pulse = SincShape(num_points=100, bandwidth=5)
-    time_axis = np.linspace(0, 1, 100)
-
-    plt.figure(figsize=(10, 4))
-    plt.subplot(1, 2, 1)
-    plt.plot(time_axis, sinc_pulse.shape)
-    plt.title('Sinc RF Pulse')
-    plt.xlabel('Normalized Time')
-    plt.ylabel('Amplitude')
-    plt.grid(True)
-
-    # Create and plot an Echo signal
-    echo_signal = EchoShape(num_points=100, t2=80, echo_time=50)
-    plt.subplot(1, 2, 2)
-    plt.plot(time_axis, echo_signal.shape)
-    plt.title('Echo Signal')
-    plt.xlabel('Normalized Time')
-    plt.ylabel('Amplitude')
-    plt.grid(True)
-
-    plt.tight_layout()
-    plt.show()
-
 File Structure
 ==============
 
 ::
 
     mrdiagram/
+    ├── convert.py         # Convert shapes from JSON into svg files
     ├── plot.py            # GUI application for shape management
     ├── shapes.py          # Core shape classes and mathematical implementations
     ├── shapes.json        # Shape metadata and configuration database
@@ -267,7 +235,10 @@ Features:
 - **Real-time Visualization**: See shape changes immediately
 - **64x64/32X32 Icon Preview**: Quality check with miniature shape icon
 - **JSON Import/Export**: Load and save shape databases
-- **Add/Delete Shapes**: Manage the shape database
+
+.. image:: image/plot.gif
+   :alt: Shape preview and JSON editor
+   :align: center
 
 Extension Guidelines
 ====================
